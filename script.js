@@ -1,40 +1,32 @@
-<html>
-    <head>
-    <title>Simple Interest Calculator</title>
+function compute()
+{
+	document.getElementById("result").innerHTML = "";
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"> </script>
-    </head>
-    <body>
-    <div class="maindiv">
-        <h1>Simple Interest Calculator</h1>
-        <form action="/action_page.php">
-        <label for="principal">Amount</label>
-        <input type="number" id="principal" name="principal" min="1" required="true"><br><br>
-        </form>     
-        Interest Rate <input type="range"  id="rate" min="1" max="20" step="0.25" value="10.25" onchange="updateRate(this.value)">
-        <span id="rate_val">
-            10.25%
-        </span> <br/>
-        No. of Years <select id="years">
-           <option value="1">1</option>
-           <option value="2">2</option>
-           <option value="3">3</option>
-           <option value="4">4</option>
-           <option value="5">5</option>
-           <option value="6">6</option>
-           <option value="7">7</option>
-           <option value="8">8</option>
-           <option value="9">9</option>
-           <option value="10">10</option>
-        </select> <br>  
-        <button id="button-style" onclick="compute()">Compute Interest</button> <br>
-        <span id="result">
-        </span>     
-        <footer>
-            &#169; This Calculator belongs to -Baida Achkar
-        </footer>
-    </div>  
-    </body>
-  </html>
+	var principal = document.getElementById("principal").value;
+  
+  if (principal === "")
+     {alert('!! Empty Amount !! .. This have to be a number');
+	document.getElementById("principal").focus();
+  } else if (principal == 0)
+
+	{alert(' !! Zero Amount Number !! .. This have to be greater than zero ');
+	document.getElementById("principal").focus();
+
+} else if (principal < 0)
+{alert(' !! Negative Amount Number !! .. This have to be greater than zero');
+document.getElementById("principal").focus();}
+else {
+    var rate = document.getElementById("rate").value;
+    var years = document.getElementById("years").value;
+    var interest = principal * years * rate /100;
+    var year = new Date().getFullYear()+parseInt(years);
+document.getElementById("result").innerHTML="If you deposit <mark>" +principal+ ",</mark> \<br\>at an interest rate of <mark>"+rate+"% </mark> \<br\>You will receive an amount of <mark> "+interest+",</mark> \<br\>in the year <mark> "+year+" </mark>\<br\>"}}
+
+ 
+function updateRate() 
+    {   
+    var rateval = document.getElementById("rate").value;
+    document.getElementById("rate_val").innerText=rateval;
+    }      
+
       
